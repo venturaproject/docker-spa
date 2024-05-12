@@ -4,8 +4,6 @@
 
 This is a complete stack for running Symfony 7.0 in Docker containers using docker-compose tool.
 
-Inspired by [Boilerplate para Symfony basado en Docker, NGINX y PHP8](https://youtu.be/A82-hry3Zvw)
-
 It is composed by 3 containers:
 
 - `nginx`, acting as the webserver.
@@ -32,6 +30,7 @@ The API is designed to act as a mobile application backend, providing user authe
 - User can log out from all devices.
 - User can change password.
 - User can delete his account.
+- Create a spa services
 
 ## Installation
 
