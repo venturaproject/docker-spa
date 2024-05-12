@@ -19,6 +19,7 @@ All controller entry points are located in `src/EntryPoint/Http/Controllers` fol
 We have two modules:
 - `Shared` - classes designed for general use.
 - `User` - user and authentication related classes.
+- `SpaService` - spa services related classes.
 
 This is a pure **API** application, i.e. you need a compatible UI app to make API requests and test the backend API in real life. Another option is to Open API doc (see below) "try it out" feature.
 
@@ -66,13 +67,6 @@ Make sure that you rebuild containers after database setting are changed. In loc
 - `docker compose down --remove-orphans`
 - `docker compose build --no-cache` (optional, just to make sure we have fresh images)
 - `docker compose up -d`
-
-## Adding more features
-
-If you need to install more Symfony packages you have to do it inside docker `php` container.
-
-If you need to process Symfony messenger queue, cron jobs, etc., you will have to launch background processes in `php` container.
-E.g. [Run multiple processes in a container](https://docs.docker.com/config/containers/multi-service_container/)
 
 
 
