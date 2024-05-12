@@ -43,7 +43,6 @@ The API is designed to act as a mobile application backend, providing user authe
 3. `docker exec -it php bash` or use your favourite Docker desktop application `php` container Exec tab.
 4. Install dependencies: `#composer install`
 5. Migrate database: `#php bin/console doctrine:migrations:migrate` (optional - no needed if you are going to execute PHP Unit tests **only**)
-6. Run tests : `#php ./vendor/bin/phpunit`. Current project setup uses in-memory Sqlite database for testing, so migrations are done automatically before each test.
 7. Browse Open API docs: http://localhost/api/doc
 
 
