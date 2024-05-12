@@ -1,0 +1,52 @@
+<?php
+
+namespace App\Tests\Integration\Reservation;
+
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use App\Modules\SpaService\Application\CreateReservation\CreateReservationUseCase;
+use App\Modules\SpaService\Application\CreateReservation\CreateReservationRequest;
+use App\Modules\SpaService\Infrastructure\Persistence\Doctrine\SpaServiceRepository; // Importa el repositorio correcto
+use App\Modules\SpaService\Infrastructure\Persistence\Doctrine\ServiceBookingRepository; // Importa el repositorio correcto
+use Doctrine\ORM\EntityManagerInterface;
+
+class CreateReservationIntegrationTest extends KernelTestCase
+{
+    protected function setUp(): void
+    {
+        parent::setUp(); // Llama al método setUp() de la clase padre
+        
+        // Inicializamos el núcleo de Symfony
+        self::bootKernel();
+    }
+
+    public function testCreateReservation(): void
+    {
+        // Obtenemos instancias de los servicios necesarios
+        $container = static::getContainer();
+        $entityManager = $container->get(EntityManagerInterface::class);
+        $spaServiceRepository = $container->get(SpaServiceRepository::class); // Obtenemos el repositorio correcto
+        $serviceBookingRepository = $container->get(ServiceBookingRepository::class); // Obtenemos el repositorio correcto
+        
+        // Creamos una instancia del caso de uso
+        $useCase = new CreateReservationUseCase($spaServiceRepository, $serviceBookingRepository, $entityManager); // Pasamos los repositorios correctos y el EntityManager
+        
+        // Creamos una solicitud de creación de reserva
+        $request = new CreateReservationRequest('1', 'John Doe', 'john.doe@example.com', new \DateTime('2024-01-01'), new \DateTime('10:00:00'));
+        
+        // Ejecutamos el caso de uso
+        $response = $useCase->execute($request);
+        
+        // Verificamos que la reserva se haya creado correctamente
+        $this->assertTrue($response->success);
+        $this->assertNotEmpty($response->booking->getId());
+        $this->assertEquals('John Doe', $response->booking->getClientName());
+        
+        // También podrías realizar aserciones adicionales para verificar otros detalles de la reserva si es necesario
+    }
+}
+
+
+
+
+
+

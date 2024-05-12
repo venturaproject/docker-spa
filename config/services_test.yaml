@@ -1,0 +1,17 @@
+services:
+  Symfony\Component\PasswordHasher\Hasher\UserPasswordHasher:
+    arguments: [ '@Symfony\Component\PasswordHasher\Hasher\PasswordHasherFactoryInterface' ]
+    public: true
+  App\Modules\User\Application\CreateUser\CreateUserUseCase:
+    arguments: [ '@App\Modules\User\Domain\Contract\UserServiceInterface' ]
+    public: true
+  App\Modules\User\Application\UpdateUser\UpdateUserUseCase:
+    arguments: [ '@App\Modules\User\Domain\Contract\UserServiceInterface' ]
+    public: true
+  App\Modules\User\Application\ChangePassword\ChangePasswordUseCase:
+    arguments: [ '@App\Modules\User\Domain\Contract\AuthUserServiceInterface', '@Symfony\Component\PasswordHasher\Hasher\UserPasswordHasher' ]
+    public: true
+
+  _defaults:
+      public: true
+

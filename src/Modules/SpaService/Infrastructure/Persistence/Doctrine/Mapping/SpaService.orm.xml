@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="App\Modules\SpaService\Domain\SpaService" table="spa_services"
+            repository-class="App\Modules\SpaService\Infrastructure\Persistence\Doctrine\SpaServiceRepository">
+        <id name="id" type="guid" column="id">
+            <generator strategy="NONE"/>
+        </id>
+        <field name="name" type="string" column="name" length="255"/>
+        <field name="price" type="float" column="price"/>
+        <field name="createdAt" type="datetime" column="created_at"/>
+
+        <!-- Assuming there are no relationships currently, but you can add them here as needed -->
+
+        <indexes>
+            <index columns="name"/>
+        </indexes>
+
+        <!-- Assuming unique constraints if necessary -->
+        <unique-constraints>
+            <unique-constraint columns="name" name="name_unique"/>
+        </unique-constraints>
+    </entity>
+</doctrine-mapping>

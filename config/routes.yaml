@@ -1,0 +1,5 @@
+controllers:
+    resource:
+        path: ../src/EntryPoint/Http/Controller/
+        namespace: App\EntryPoint\Http\Controller
+    type: attribute
