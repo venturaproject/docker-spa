@@ -1,4 +1,4 @@
-# 🐳 Docker + PHP 8.3 + MySQL + Nginx + Symfony 7 Boilerplate
+## 🐳 Docker + PHP 8.3 + MySQL + Nginx + Symfony 7 Boilerplate
 
 ## Description
 
